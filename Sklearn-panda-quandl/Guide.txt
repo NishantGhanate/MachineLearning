@@ -1,4 +1,4 @@
-1.install python 3.6+
+1.install python 3.6+ 64 bit version 
 
 2.select drive as you want else default is C: 
 
