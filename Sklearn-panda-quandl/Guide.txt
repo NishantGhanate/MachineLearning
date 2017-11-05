@@ -5,7 +5,7 @@
 3.open cmd 
 3.2 Here i have installed in G drive  if you have selected C: then skip step 4
 
-4.cd G:\Python\Python36-32\Lib\site-packages>
+4.cd G:\Python\Python36-32\Lib\site-packages
 
 5.1 in cmd type pip install pip sklearn
 5.2 pip install pandas
