@@ -37,6 +37,6 @@ pip install pip sklearn
 
 pip install quandl
 
-pip instal lxml 
+pip install lxml 
 
 
