@@ -21,14 +21,21 @@
 
 9.to excute that file press F5 
 
+-----Some of library files----------
 
 pip install tensforflow
 
 pip install jupyter
 
+pip install pandas
+
 pip instal matplotlib
 
 pip install pillow
+
+pip install pip sklearn
+
+pip install quandl
 
 pip instal lxml 
 
