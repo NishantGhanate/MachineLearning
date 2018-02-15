@@ -6,36 +6,31 @@ Created on Tue Feb 13 21:08:30 2018
 """
 
 import pandas as pd
-import numpy as np
-import scipy as sp
 import matplotlib.pyplot as plt
 from matplotlib import style 
-#
+# reading file usinng panda lib 
 df = pd.read_csv("Results_demo.csv")
-full = df.iloc[:,:].values
+full = df.iloc[:,:].values # getting just values from table creating a tuple 
 
-from sklearn.preprocessing import LabelEncoder
-label_encoder_subj = LabelEncoder()
-#selecting first col of dataset (country)
-
+from sklearn.preprocessing import LabelEncoder # Here we will change subject names to integer labels e.g chem = 1
+label_encoder_subj = LabelEncoder() 
+#selecting first col of dataset (subject names)
 full[:,0] = label_encoder_subj.fit_transform(full[:,0])
-
 full = sorted(full, key=lambda x: x[0], reverse=False)
+
 chem_passed = []
 chem_failed = []
-
 phy_passed = []
 phy_failed = []
-
 maths_passed = []
 maths_failed = []
 
  # chem_passed.append(n[2])
 for n in full:  
 #print (n)
-     if n[0] == 0:
+     if n[0] == 0: # 1st value in tuple is subject code 
          # dipshit rookie coding skills 
-          if n[2] > 24:
+          if n[2] > 24: # 3rd value in tuple is subject marks 
               chem_passed.append(n[2])
           else :
                chem_failed.append(n[2])
