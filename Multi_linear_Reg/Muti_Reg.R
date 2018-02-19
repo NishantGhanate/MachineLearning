@@ -21,3 +21,7 @@ regressor = lm(formula = Profit ~ .,
 
 y_pred = predict(regressor, newdata = test_set)
 #y_pred in console
+
+#Building the optimal model using Backward Elimination 
+regressor = lm(formula = Profit ~ R.D.Spend )
+#summary(regressor) in console
