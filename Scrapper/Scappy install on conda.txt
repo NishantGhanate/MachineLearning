@@ -1,0 +1,6 @@
+(base) C:\Users\Nishant>cd G:\ProgramData\Anaconda3\Lib\site-packages
+
+(base) C:\Users\Nishant>G:
+
+(base) G:\ProgramData\Anaconda3\Lib\site-packages>conda install -c scrapinghub scrapy
+Solving environment: done
