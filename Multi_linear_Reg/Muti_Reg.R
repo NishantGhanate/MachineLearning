@@ -16,7 +16,7 @@ test_set = subset(dataset, split == FALSE)
 
 #regressor = lm(formula = Profit ~ R.D.Spend + Adminstration + Marketting.Spend + State)
 regressor = lm(formula = Profit ~ .,
-               data = training_set) # select all independet variable
+               data = training_set) # . means select all independet variable
 #summary(regressor) in console
 
 y_pred = predict(regressor, newdata = test_set)
