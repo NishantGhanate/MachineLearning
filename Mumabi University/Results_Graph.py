@@ -50,7 +50,7 @@ for n in full:
 x = [1,3,5] # x - axis index
 y = [len(chem_passed),len(phy_passed),len(maths_passed)] # y - axis data 
 
-plt.bar(x,y,align='center')
+plt.bar(x,y,color='r',align='center')
 x2 = [2,4,6] # x - axis index
 y2 = [len(chem_passed),len(phy_passed),len(maths_passed)] # y - axis data 
 
