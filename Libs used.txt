@@ -1,0 +1,2 @@
+conda install -c anaconda pillow 
+conda install -c anaconda xlwt
