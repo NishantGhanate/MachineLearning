@@ -1,0 +1,15 @@
+scrapy shell http://www.4chan.org/
+
+response.css('div.column>h3::text').extract()
+
+response.css('a.boardlink::text').extract()
+
+fetch('http://boards.4chan.org/g/')
+
+response.css('title::text').extract()
+
+response.css('a::attr(href)').extract()
+
+response.css('blockquote.postMessage::text').extract_first()
+
+response.css('span.post::text').extract()
