@@ -1,3 +1,7 @@
+scrapy crawl <spider name> -o file.csv -t csv
+scrapy crawl flip -o file.csv -t csv
+scrapy crawl flip -o file.json
+
 scrapy shell http://www.4chan.org/
 
 response.css('div.column>h3::text').extract()
@@ -13,3 +17,5 @@ response.css('a::attr(href)').extract()
 response.css('blockquote.postMessage::text').extract_first()
 
 response.css('span.post::text').extract()
+
+ print(response.text)

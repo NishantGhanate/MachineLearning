@@ -1,0 +1,19 @@
+**************************************************************
+Amazon spider 
+
+ response.css('span.p13n-sc-price::text').extract()  #price
+ response.css('div.zg_rankDiv>span.zg_rankNumber::text').extract_first()
+ response.css('span.zg_rankNumber::text').extract_first() 		#product number
+response.css('a.a-size-small.a-link-normal::text').extract_first()	#reviews count
+response.css('span.a-icon-alt::text').extract_first()                   # rating stars
+
+***************************************************************************************
+ Flipakar spider :
+
+fetch('https://www.flipkart.com/mobile-phones-store')
+response.css('div.iUmrbN::text').extract_first() # product name
+response.css('div.BXlZdc::text').extract_first() # product spec
+response.css('div._3o3r66::text').extract_first() #product price 
+response.css('h2.puxlXr::text').extract() 	   # topic header
+response.css('a._2AkmmA._1eFTEo').extract_first() # hyper link concat after https://www.flipkart.com/
+response.css('a::attr(href)').extract()      #crawler hyperlinks

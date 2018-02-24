@@ -13,3 +13,4 @@ class MySpider(BaseSpider):
 			title = titles.select("a/text()").extract()
 			link = title.select("a/@href").extract()
 			print (title , link )
+			self.log(title)
