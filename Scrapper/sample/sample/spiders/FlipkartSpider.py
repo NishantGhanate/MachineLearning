@@ -1,7 +1,7 @@
 import scrapy 
 
 class Flipart(scrapy.Spider):
-    name = 'flip'
+    name = 'flippy'
     start_urls = ['https://www.flipkart.com/mobile-phones-store']
 
     def parse(self,response):

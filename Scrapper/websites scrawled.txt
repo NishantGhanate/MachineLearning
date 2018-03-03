@@ -17,3 +17,25 @@ response.css('div._3o3r66::text').extract_first() #product price
 response.css('h2.puxlXr::text').extract() 	   # topic header
 response.css('a._2AkmmA._1eFTEo').extract_first() # hyper link concat after https://www.flipkart.com/
 response.css('a::attr(href)').extract()      #crawler hyperlinks
+response.css('a._2AkmmA._1eFTEo::attr(href)').extract_first()  #View all button href
+
+***************************************************************************************
+ Elon Musk Twitter :
+
+ response.css('b.u-linkComplex-target::text').extract_first()  				      # @elonmusk
+ response.css('a.ProfileHeaderCard-nameLink.u-textInheritColor.js-nav::text').extract_first() # username
+ response.css('span._timestamp.js-short-timestamp::text').extract()			      # tweet timestamp
+
+response.css('div.tweet.js-stream-tweet.js-actionable-tweet.js-profile-popup-actionable.dismissible-content.original-tweet.js-original-tweet::text').extract_first() # container 
+
+ response.css('span.ProfileTweet-actionCount::attr(data-tweet-stat-count)')[0].extract()	 # comment 
+ response.css('span.ProfileTweet-actionCount::attr(data-tweet-stat-count)')[1].extract() 	 # retweet
+ response.css('span.ProfileTweet-actionCount::attr(data-tweet-stat-count)')[2].extract()	 #like
+ response.css('p.TweetTextSize.TweetTextSize--normal.js-tweet-text.tweet-text::text').extract_first() # Tweet data
+
+
+
+
+     
+      
+       

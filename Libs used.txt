@@ -2,3 +2,4 @@ conda install -c anaconda pillow
 conda install -c anaconda xlwt
 conda install -c conda-forge tensorflow 
 conda install -c conda-forge scrapy 
+conda install -c bioconda pyx 
