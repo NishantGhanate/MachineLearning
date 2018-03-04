@@ -25,7 +25,6 @@ response.css('a._2AkmmA._1eFTEo::attr(href)').extract_first()  #View all button 
  response.css('b.u-linkComplex-target::text').extract_first()  				      # @elonmusk
  response.css('a.ProfileHeaderCard-nameLink.u-textInheritColor.js-nav::text').extract_first() # username
  response.css('span._timestamp.js-short-timestamp::text').extract()			      # tweet timestamp
-
 response.css('div.tweet.js-stream-tweet.js-actionable-tweet.js-profile-popup-actionable.dismissible-content.original-tweet.js-original-tweet::text').extract_first() # container 
 
  response.css('span.ProfileTweet-actionCount::attr(data-tweet-stat-count)')[0].extract()	 # comment 
@@ -33,7 +32,17 @@ response.css('div.tweet.js-stream-tweet.js-actionable-tweet.js-profile-popup-act
  response.css('span.ProfileTweet-actionCount::attr(data-tweet-stat-count)')[2].extract()	 #like
  response.css('p.TweetTextSize.TweetTextSize--normal.js-tweet-text.tweet-text::text').extract_first() # Tweet data
 
+**********************************************************************************************************
+Reddit.com :
 
+response.css('div::attr(data-context)').extract()
+response.css('div.midcol.unvoted>div.score.unvoted::text').extract()
+response.css('div.midcol.unvoted>div.score.likes::text').extract()
+response.css('div.midcol.unvoted>div.score.dislikes::text').extract()
+response.css('div.score.unvoted::text').extract()
+response.css('a.title.may-blank.outbound::text').extract()
+response.css('a.bylink.comments.may-blank::text').extract()
+response.css('span.next-button>a::attr(href)').extract()  #next page link
 
 
      
