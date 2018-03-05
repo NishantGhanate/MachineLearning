@@ -40,11 +40,11 @@ response.css('div.midcol.unvoted>div.score.unvoted::text').extract()
 response.css('div.midcol.unvoted>div.score.likes::text').extract()
 response.css('div.midcol.unvoted>div.score.dislikes::text').extract()
 response.css('div.score.unvoted::text').extract()
-response.css('a.title.may-blank.outbound::text').extract()
+response.css('p.title>a.title.may-blank.outbound::text').extract() # post title
 response.css('a.bylink.comments.may-blank::text').extract()
 response.css('span.next-button>a::attr(href)').extract()  #next page link
-
-
+      
+            
      
       
        

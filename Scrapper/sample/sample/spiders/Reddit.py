@@ -7,26 +7,19 @@ class Reddit(BaseSpider):
     start_urls = ['https://www.reddit.com/']
 
     def parse(self,response):
-         i = 0 
-         nextpage = response.css('span.next-button>a::attr(href)').extract_first()
-         for votes in response.css('div.midcol.unvoted'):         
-             votes = {
-                 'vote-count' : votes.css('div.score.unvoted::text').extract_first(),
-                 'vote-likes' : votes.css('div.score.likes::text').extract_first(),
-                 'votes-dislike' :  votes.css('div.score.dislikes::text').extract_first(),
-             }
-             i = i+1
-             yield votes
-             
+         Votes  =  response.css('div.midcol.unvoted')
+         Titles = response.css('p.title')
+
+         for (vote,titles) in zip( Votes,Titles ):
+           yield{
+               'vote-count' : vote.css('div.score.unvoted::text').extract_first(),
+                'vote-likes' : vote.css('div.score.likes::text').extract_first(),
+                'votes-dislike' :  vote.css('div.score.dislikes::text').extract_first(),
+                'Title' : titles.css('a::text').extract_first(),
+           }
+
+
          self.log("Shit")
-         if nextpage:
-            yield scrapy.Request(url = nextpage , callback = self.parse)
-
-
-        
-            
-
-         
-                
-       
-        
+         nextpage = response.css('span.next-button>a::attr(href)').extract_first() 
+         #if nextpage:
+          #  yield scrapy.Request(url = nextpage , callback = self.parse)
