@@ -35,15 +35,15 @@ response.css('div.tweet.js-stream-tweet.js-actionable-tweet.js-profile-popup-act
 **********************************************************************************************************
 Reddit.com :
 
-response.css('div::attr(data-context)').extract()
 response.css('div.midcol.unvoted>div.score.unvoted::text').extract()
 response.css('div.midcol.unvoted>div.score.likes::text').extract()
 response.css('div.midcol.unvoted>div.score.dislikes::text').extract()
-response.css('div.score.unvoted::text').extract()
-response.css('p.title>a.title.may-blank.outbound::text').extract() # post title
-response.css('a.bylink.comments.may-blank::text').extract()
+
+response.css('p.title>a::text').extract() # post title
 response.css('span.next-button>a::attr(href)').extract()  #next page link
-      
+
+response.css('p.tagline>a.subreddit::text').extract_first() # reddit page
+response.css('p.tagline>time::attr(title)').extract_first() #time posted   
             
      
       
