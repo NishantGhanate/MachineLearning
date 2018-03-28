@@ -12,6 +12,6 @@ class SampleItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
 	# below is modified code
-	title = Field()
-	link = Field()
+	#title = Field()
+	#link = Field()
     pass
