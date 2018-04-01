@@ -20,28 +20,47 @@
 -----Some of library files----------
 
 pip install tensforflow
+
 pip install jupyter
+
 pip install pandas
+
 pip instal matplotlib
+
 pip install pillow
+
 pip install  sklearn
+
 pip install quandl
+
 pip install lxml 
+
 python -m pip install opencv-python
+
 pip install scrapy 
+
 pip install opencv-python
 
 ----------------------------Anaconda----------------------------------------------------
 
 conda install -c anaconda pillow 
+
 conda install -c anaconda xlwt
+
 conda install -c conda-forge tensorflow 
+
 conda install -c conda-forge scrapy 
+
 conda install -c bioconda pyx 
+
 conda install -c conda-forge opencv
+
 conda install -c anaconda rope 
+
 conda install numpy
+
 conda install anaconda-client
+
 conda install --channel https://conda.anaconda.org/menpo 
 
 
