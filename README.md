@@ -8,7 +8,10 @@
  
  Ignore this :
  
- G:\Python27;G:\Python27\Scripts; G:\Program Files\Python36\Scripts\;G:\Program Files\Python36\;
+ G:\Python27;G:\Python27\Scripts; 
+ 
+ G:\Program Files\Python36\Scripts\;G:\Program Files\Python36\;
+ 
 .right click on my computer 
 .properties 
 .Advanced System setting 
