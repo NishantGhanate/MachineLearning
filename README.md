@@ -72,4 +72,8 @@ python -m pip install opencv-contrib-python
 
 pip3 install --upgrade tensorflow-gpu
 
+conda install -c anaconda protobuf
+
+
+
 

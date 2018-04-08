@@ -1,40 +1,26 @@
 **** Installing scrapy in anaconda python 3.6+ *******
+open anaconda prompt
 
-//open anaconda cmd , if python is on C : drive just use step 3 : \\
+(base) C:\Users\Nishant> conda install -c scrapinghub scrapy
 
+*******************Starting project ******************************
 
-(base) C:\Users\Nishant>cd G:\ProgramData\Anaconda3\Lib\site-packages
+Select any directory where you want to store your project
 
-(base) C:\Users\Nishant>G:
+(base) C:\Users\Nishant>scrapy startproject sample
 
-(base) G:\ProgramData\Anaconda3\Lib\site-packages>conda install -c scrapinghub scrapy
-Solving environment: done
+ 
+**********************Lets Start*********************************
 
-*****Starting project ************************************** 
+open sample folder sample/spiders
 
-(base) C:\Users\Nishant>cd G:\ProgramData\Anaconda Projects\Scrapper
+copy any of the spider 
 
-(base) C:\Users\Nishant>G:
+open anaconda prompt 
 
-(base) G:\ProgramData\Anaconda Projects\Scrapper>scrapy startproject sample
-New Scrapy project 'sample', using template directory 'G:\\ProgramData\\Anaconda3\\lib\\site-packages\\scrapy\\templates\\project', created in:
-    G:\ProgramData\Anaconda Projects\Scrapper\sample
-
-You can start your first spider with:
-    cd sample
-    scrapy genspider example example.com
-
-(base) G:\ProgramData\Anaconda Projects\Scrapper>
-
-
-***************************************************************
-Goto  G:\ProgramData\Anaconda Projects\Scrapper\Sample     // 1. Here new folder is created named Sample //2. open items.py //3.see modified code 
-
-goto anacond promt select your project folder
-.
-cd G:\ProgramData\Anaconda Projects\Scrapper\Sample
-
-type : scrapy crawl Nishant in conda prompt  
+scrapy crawl <spider name> -o file.csv -t csv
+scrapy crawl flip -o file.csv -t csv
+scrapy crawl flip -o file.json
 
 
 

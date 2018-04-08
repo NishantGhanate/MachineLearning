@@ -1,0 +1,22 @@
+https://www.tensorflow.org/install/install_windows
+
+Step 1: Download and install Anaconda python 3.6 [x64] or higher [Google it]
+
+Step 2: Open anaconda prompt paste this into command line  hope you have gpu 
+	
+Step 3: pip3 install --upgrade tensorflow-gpu
+	conda install -c anaconda protobuf 
+	pip3 install lxml
+	pip3 install Cython
+	pip3 install pandas
+	pip3 install jupyter
+	python -m pip install opencv-contrib-python
+	pip3 install matplotlib
+
+Step 4: Download and install CUDA 9.0 https://developer.nvidia.com/cuda-toolkit-archive
+
+Step 5: Download cuDNN v7.1.2 (Mar 21, 2018), for CUDA 9.0
+
+
+
+
