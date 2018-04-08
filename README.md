@@ -66,4 +66,10 @@ conda install anaconda-client
 
 conda install --channel https://conda.anaconda.org/menpo 
 
+conda install pip
+
+python -m pip install opencv-contrib-python
+
+pip3 install --upgrade tensorflow-gpu
+
 

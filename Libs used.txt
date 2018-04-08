@@ -8,3 +8,6 @@ conda install -c anaconda rope
 conda install numpy
 conda install anaconda-client
 conda install --channel https://conda.anaconda.org/menpo 
+conda install pip
+python -m pip install opencv-contrib-python
+ 
