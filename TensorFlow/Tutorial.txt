@@ -17,6 +17,16 @@ Step 4: Download and install CUDA 9.0 https://developer.nvidia.com/cuda-toolkit-
 
 Step 5: Download cuDNN v7.1.2 (Mar 21, 2018), for CUDA 9.0
 
+Step 6: git pull https://github.com/tensorflow/models.git in your working DIR
+
+Step 7: Download faster_rcnn_inception_v2_coco
+
+https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/detection_model_zoo.md
+
+Step 8: Models/Research/object_detection
+
+Step 9: paste faster_rcnn folder into that
+
 
 
 
