@@ -14,12 +14,13 @@
 
 -----------------------------[ Download tensorflow Dependencies ]--------------------------
 
--> Open docker and paste 
+-> Open docker and paste this will download tensorflow 
 
 docker run -it gcr.io/tensorflow/tensorflow:latest-devel
 
 -> After installatiom press ctrl+D to exit root
 
+-> mkdrir tf_files
 
 -> Copy paste 
 
@@ -39,12 +40,14 @@ ARCHITECTURE="mobilenet_0.50_${IMAGE_SIZE}"
 -> download and paste into python/scripts https://github.com/NishantGhanate/Machine-Learning/tree/master/TensorFlow/scripts
 
 
--> run this command python -m scripts.retrain -h  
+-> run this command [ python -m scripts.retrain -h  ]
 
 
 
 
-
+-> python -m scripts.label_image 
+--graph=tf_files/retrained_graph.pb 
+--image=tf_files/red-rose.jpg
 
 
  
