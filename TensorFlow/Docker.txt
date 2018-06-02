@@ -1,0 +1,61 @@
+-------------------------------[ Getting Started ]--------------------------------------
+
+-> Download docker toolbox  https://docs.docker.com/toolbox/toolbox_install_windows/
+
+-> If you have alread gitbash untick during docker toolbox installtion 
+
+-> After installtion do this
+
+ -right-click on Docker-quick-start->properties 
+
+ -Target input box  "G:\Program Files\Git\bin\bash.exe" --login -i "H:\Program Files\DockerToolbox\start.sh" 	
+
+
+
+-----------------------------[ Download tensorflow Dependencies ]--------------------------
+
+-> Open docker and paste 
+
+docker run -it gcr.io/tensorflow/tensorflow:latest-devel
+
+-> After installatiom press ctrl+D to exit root
+
+
+-> Copy paste 
+
+curl http://download.tensorflow.org/example_images/flower_photos.tgz \
+    | tar xz -C tf_files
+
+-> ls tf_files/flower_photos
+
+
+-> paste  IMAGE_SIZE=224
+ARCHITECTURE="mobilenet_0.50_${IMAGE_SIZE}"
+
+
+-> tensorboard --logdir tf_files/training_summaries &
+
+
+-> download and paste into python/scripts https://github.com/NishantGhanate/Machine-Learning/tree/master/TensorFlow/scripts
+
+
+-> run this command python -m scripts.retrain -h  
+
+
+
+
+
+
+
+ 
+-------- * Ignore *--------------------
+
+docker-machine ls -t 20
+
+docker-machine restart
+
+eval "$(docker-machine env default)"
+
+docker run hello-world
+
+https://github.com/tensorflow/models/tree/master/research/slim#pre-trained-models
