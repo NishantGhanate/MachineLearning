@@ -8,6 +8,7 @@ from keras import backend as K
 from keras.models import Sequential
 from keras.constraints import maxnorm
 from keras.optimizers import SGD
+K.set_image_dim_ordering('th')
 
 batch_size = 32 # in each iteration, we consider 32 training examples at once
 num_epochs = 200 # we iterate 200 times over the entire training set
@@ -21,27 +22,29 @@ img_rows, img_cols = 32, 32
 
 (X_train, y_train), (X_test, y_test) = cifar10.load_data() # fetch CIFAR-10 data
 
-print("X train = " + X_train.shape ) #(50000, 32, 32, 3)
+print("No of images = " + str(X_train.shape[0]) + " , image size = " + str(X_train.shape[1]) + " , channel = "+ str(X_train.shape[3]) ) #(50000, 32, 32, 3)
 
-# num_train, height, width, depth = X_train.shape # there are 50000 training examples in CIFAR-10 
-# num_test = X_test.shape[0] # there are 10000 test examples in CIFAR-10
-# num_classes = np.unique(y_train).shape[0] # there are 10 image classes
-
+## To show images
 # for i in range(0, 9):
 # 	plt.subplot(330 + 1 + i)
 # 	plt.imshow(X_train[i])
 # # show the plot
 # plt.show()
 
+num_train, height, width, depth = X_train.shape # there are 50000 training examples in CIFAR-10 
+num_test = X_test.shape[0] # there are 10000 test examples in CIFAR-10
+num_classes = np.unique(y_train).shape[0] # there are 10 image classes
+
+# # expected conv2d_1_input to have shape (3, 32, 32) but got array with shape (32, 32, 3)
 # (n, depth, width, height). a full-color image with all 3 RGB channels will have a depth of 3.
-if K.image_data_format() == 'channels_first':
-    X_train = X_train.reshape(X_train.shape[0], 1, img_rows, img_cols)
-    X_test = X_test.reshape(X_test.shape[0], 1, img_rows, img_cols)
-    input_shape = (1, img_rows, img_cols)
-else:
-    X_train = X_train.reshape(X_train.shape[0], img_rows, img_cols, 1)
-    X_test = X_test.reshape(X_test.shape[0], img_rows, img_cols, 1)
-    input_shape = (img_rows, img_cols, 1)
+# if K.image_data_format() == 'channels_first':
+#     X_train = X_train.reshape(X_train.shape[0], 1, img_rows, img_cols)
+#     X_test = X_test.reshape(X_test.shape[0], 1, img_rows, img_cols)
+#     input_shape = (1, img_rows, img_cols)
+# else:
+#     X_train = X_train.reshape(X_train.shape[0], img_rows, img_cols, 1)
+#     X_test = X_test.reshape(X_test.shape[0], img_rows, img_cols, 1)
+#     input_shape = (img_rows, img_cols, 1)
 
 
 # normalize inputs from 0-255 to 0.0-1.0
