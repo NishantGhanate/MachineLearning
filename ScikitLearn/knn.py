@@ -3,6 +3,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import train_test_split
 from sklearn import datasets
 
+# numbers data set digits 0-9 
 digits = datasets.load_digits()
 
 # Create feature and target arrays
