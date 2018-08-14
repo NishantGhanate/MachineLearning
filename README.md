@@ -1,24 +1,11 @@
-# Machine-Learning And other Python Projects 
+# Machine Learning  / Data Science 
 
-1.install python 3.6+ 64 bit version 
+1.Install python 3.6+ 64 bit version 
 
-2.select drive as you want, else default is C: 
+2.Select custom drive as you want , else default is C: 
 
-3. Open cmd copy paste the below library files
- 
- Ignore this :
- 
- G:\Python27;G:\Python27\Scripts; 
- 
- G:\Program Files\Python36\Scripts\;G:\Program Files\Python36\;
- 
-.right click on my computer 
-.properties 
-.Advanced System setting 
-.3rd-column Advance
-.Enviroment Variables.
-.System Variable
-.path 
+3.Open cmd copy paste the below library files
+
  
 -----Some of library files----------
 
@@ -75,5 +62,18 @@ pip3 install --upgrade tensorflow-gpu
 conda install -c anaconda protobuf
 
 
-
+ 
+ #Ignore this :
+ 
+ G:\Python27;G:\Python27\Scripts; 
+ 
+ G:\Program Files\Python36\Scripts\;G:\Program Files\Python36\;
+ 
+.right click on my computer 
+.properties 
+.Advanced System setting 
+.3rd-column Advance
+.Enviroment Variables.
+.System Variable
+.path 
 
