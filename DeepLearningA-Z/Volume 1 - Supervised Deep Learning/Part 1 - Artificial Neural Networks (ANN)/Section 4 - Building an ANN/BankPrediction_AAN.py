@@ -37,7 +37,7 @@ import pandas as pd
 
 dataset = pd.read_csv('Churn_Modelling.csv')
 
-# ---------------@DataPreprocssing removing unwated independent variables------
+""" -----------@DataPreprocssing removing unwated independent variables------"""
     
 # Selecting coulmns from index 3 to 12 since upper bound is ignored we use +1 index 
 X = dataset.iloc[:,3:13].values
@@ -75,10 +75,13 @@ scaler = StandardScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.fit_transform(X_test)
 
-# -------------------@Building ANN import keras library-----------------------
+
+
+""" -------------------@Building ANN import keras library-------------------"""
 import keras
 from keras.models import Sequential
 from keras.layers import Dense
+from keras.layers import Dropout
 
 # Initliazing ANN Model 
 classifier = Sequential()
@@ -90,11 +93,13 @@ classifier = Sequential()
     Activation functions : https://towardsdatascience.com/activation-functions-neural-networks-1cbd9f8d91d6
 """
 # First Layer must req no of input
-classifier.add(Dense(units = 6 ,  kernel_initializer = "uniform", activation = "relu" , input_dim=11)) 
+classifier.add(Dense(units = 6 ,  kernel_initializer = "uniform", activation = "relu" , input_dim=11))
+# Droput disbales neourons to overlearn here 10% neurons are disabled 
+classifier.add(Dropout(p=0.1))
 
 # Adding second hidden layer
 classifier.add(Dense(units = 6 ,  kernel_initializer = "uniform", activation = "relu" )) 
-
+classifier.add(Dropout(p=0.1))
 # Final layer has only 1 output i.e either custmer will bank yes or no
 # if there is multiple outout add  units = no. of outout and activation = "softmax"
 classifier.add(Dense(units = 1 ,  kernel_initializer = "uniform", activation = "sigmoid" )) 
@@ -113,6 +118,80 @@ y_pred = classifier.predict(X_test)
 # converting % value to True or value threshold = 50%
 y_pred = (y_pred > 0.5)
 
+""" --------------- @Predicting new Single customer input ------------------"""
+
+""" 
+Country : France
+Credit Score : 600
+Gender : Male
+Age : 40
+Tenure : 3
+Bal : 60000
+no.of prod : 2
+credit card : yes
+active : yes
+salary : 50000
+
+convert to input string vectors by look X_train and dataset
+"""
+new_data = np.array([[0.0,0,600,1,40,3,60000,2,1,1,50000]])
+# use the same scaler methond 
+new_pred = classifier.predict(scaler.transform(new_data))
+new_pred = (new_pred > 0.5)
+
+
 # Making Confusion matrix to validate prediction from testing result 
 from sklearn.metrics import  confusion_matrix
 cm = confusion_matrix(y_test,y_pred)
+
+
+""" ------------------ @Model Evaluation K-fold  --------------------------"""
+from keras.wrappers.scikit_learn import KerasClassifier
+from sklearn.model_selection import cross_val_score
+
+def buildClassfier():
+    classifier = Sequential()
+    classifier.add(Dense(units = 6 ,  kernel_initializer = "uniform", activation = "relu" , input_dim=11)) 
+    classifier.add(Dense(units = 6 ,  kernel_initializer = "uniform", activation = "relu" )) 
+    classifier.add(Dense(units = 1 ,  kernel_initializer = "uniform", activation = "sigmoid" )) 
+    classifier.compile(optimizer = "adam" , loss = "binary_crossentropy" , metrics = ["accuracy"])
+    return classifier
+
+# using already declared calssfier
+classifier = KerasClassifier(build_fn = buildClassfier , batch_size = 10, epochs = 100 )
+# cv = no. of K-folds , n_jobs = -1 measns all cpu cores to use
+accuracy = cross_val_score(estimator = classifier , X = X_train , y = y_train , cv = 10 )
+
+# we test to mean and variance to look for overfitting     
+mean = accuracy.mean()
+variance = accuracy.std()
+
+
+""" ------------------ @Model Parameter tuning  --------------------------"""
+from keras.wrappers.scikit_learn import KerasClassifier
+from sklearn.model_selection import GridSearchCV
+
+# passing optimizer 
+def buildClassfier(optimizer):
+    classifier = Sequential()
+    classifier.add(Dense(units = 6 ,  kernel_initializer = "uniform", activation = "relu" , input_dim=11)) 
+    classifier.add(Dense(units = 6 ,  kernel_initializer = "uniform", activation = "relu" )) 
+    classifier.add(Dense(units = 1 ,  kernel_initializer = "uniform", activation = "sigmoid" )) 
+    classifier.compile(optimizer = optimizer , loss = "binary_crossentropy" , metrics = ["accuracy"])
+    return classifier
+
+
+classifier = KerasClassifier(build_fn = buildClassfier )
+
+# https://towardsdatascience.com/a-look-at-gradient-descent-and-rmsprop-optimizers-f77d483ef08b
+parameters = {
+        'optimizer' :['rmsprop' , 'adam'],
+        'batch_size' :[24,32],
+        'epochs' : [100,500],
+        }
+
+grid_search = GridSearchCV(estimator = classifier , param_grid = parameters , scoring = 'accuracy' , cv = 10 )
+grid_search = grid_search.fit(X_train,y_train)
+
+best_params = grid_search.best_params_
+best_accuracy = grid_search.best_score_
