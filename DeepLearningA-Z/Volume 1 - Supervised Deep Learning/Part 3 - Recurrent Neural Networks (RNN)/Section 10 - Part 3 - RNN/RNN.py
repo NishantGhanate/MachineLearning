@@ -16,7 +16,7 @@ from sklearn.model_selection import train_test_split
 
 """ -------------------------- @Data Precossing Step ------------------------"""
 
-dataframe = pd.read_csv('Reliance.csv')
+dataframe = pd.read_csv('BTC-USD.csv')
 
 # Splitting Data set 80% train & 20 % test 
 training_set, test_set = train_test_split(dataframe, test_size=0.2 ,shuffle = False)
@@ -31,12 +31,12 @@ training_set = scaler.fit_transform(training_set)
 
 # X_train = today T0 ,Y_train = Tomrrow T1 
 # : n - 1  
-X_train = training_set[0:978]
+X_train = training_set[0:1460]
 # Shift by T + 1
-y_train = training_set[1:979]
+y_train = training_set[1:1461]
 
 # Reshaping into 3 dimenson array size  = X_train size after spilt ,  timestamp = T+1 , feature = 1 i.e Stock price
-X_train = np.reshape(X_train,(978 , 1, 1))
+X_train = np.reshape(X_train,(1460 , 1, 1))
 
 """ -------------------------- @Building Regression Model ---------------------"""
 
@@ -56,6 +56,7 @@ regressor.compile(optimizer='adam', loss='mean_squared_error')
 # Fitting the RNN to the Training set
 regressor.fit(X_train,y_train,batch_size=32,epochs=200)
 
+
 """ -------------------------- @Predicting new values ---------------------"""
 
 real_stock_price = test_set.iloc[:,1:2].values
@@ -64,17 +65,18 @@ inputs = real_stock_price
 inputs = scaler.fit_transform(inputs)
 
 # 246 observations
-inputs = np.reshape(inputs , (246,1,1))
+inputs = np.reshape(inputs , (366,1,1))
 
 # Predication 
 predicted_stock_price = regressor.predict(inputs)
 predicted_stock_price = scaler.inverse_transform(predicted_stock_price)
-
+print('Predicated')
+print(predicted_stock_price)
 
 # Visualation
 plt.plot(real_stock_price , color ='red' , label =' Real stock price')
 plt.plot(predicted_stock_price , color ='blue' , label =' Predicted stock price')
-plt.title('Reliance Stock price prediction')
+plt.title('BTC  Stock price prediction')
 plt.xlabel('Time')
 plt.ylabel('Stock price')
 plt.legend()
@@ -86,3 +88,16 @@ from sklearn.metrics import mean_squared_error
 rmse = math.sqrt( mean_squared_error(real_stock_price , predicted_stock_price ))
 
 # divide rmse by median value of real stock price to get % value of error
+
+""" -------------------------- @Saving the model ---------------------"""
+"""
+regressor.save('StockModel.h5')
+
+from keras.models import load_model
+# load model from single file
+model = load_model('StockModel.h5')
+output = model.predict(inputs)
+output = scaler.inverse_transform(output)
+print('from loaded model')
+print(output) """
+
