@@ -42,10 +42,10 @@ classifier.add(Flatten())
 # Step 4 - Hidden layer size 
 classifier.add(Dense(output_dim = 128  , activation = "relu"))
 
-# outputLayer with 1 output 
+# outputLayer with 1 output , # softmax for multiclass
 classifier.add(Dense(output_dim = 1  , activation = "sigmoid"))
 
-# Compile the CNN latyer 
+# Compile the CNN latyer , # Categorical_crossentropy for multple
 classifier.compile(optimizer = "adam" , loss = "binary_crossentropy" , metrics = ["accuracy"]) 
 
 """----------------------- @ImagePreprocessing ----------------------------- """
@@ -62,11 +62,14 @@ train_datagen = ImageDataGenerator(
 
 test_datagen = ImageDataGenerator(rescale=1./255)
 
+# class_mode='categorical'  for multiple class
 training_set = train_datagen.flow_from_directory(
         'dataset/training_set',
         target_size=(64, 64),
         batch_size=32,
         class_mode='binary')
+
+# label_map = (training_set.class_indices)
 
 test_set = test_datagen.flow_from_directory(
         'dataset/test_set',
@@ -95,3 +98,7 @@ result = classifier.predict(test_image)
 
 # Gives label assigned to cateogry i.e Cat = 0 & Dog = 1
 training_set.class_indices
+
+# For multiclass 
+# y_prob = classifier.predict(test_image) 
+# y_classes = y_prob.argmax(axis=-1)
